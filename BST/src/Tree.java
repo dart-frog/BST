@@ -13,11 +13,32 @@ public class Tree {
 		return drill(granddad,n);
 	}
 	public void delete(int n){
-		ArrayList<Nexus> z = improvisedDrill(granddad, n);
-		Nexus nex = z.get(z.size() - 1);
+		ArrayList<Nexus> z = improvisedDrill(granddad, n, new ArrayList<Nexus>());
+		
+		Nexus nex = z.get(z.size() -1);
+		//no children
 		if (nex.leftChild ==null && nex.rightChild == null){
-			Nexus parent = z.get(z.size() -2);
-			
+			if (granddad == nex){
+				granddad = null;
+			}
+			else{
+				Nexus parent = z.get(z.size() -2);
+				if (parent.getRightChild() == nex){
+					parent.setRightChildNull();
+				}
+				if (parent.getLeftChild() == nex){
+					parent.setLeftChildNull();
+				}
+			}
+		}
+		//one child
+		if (nex.leftChild != null && nex.rightChild == null){
+			if (granddad == nex){
+				granddad = nex.getLeftChild();
+			}
+			else{
+				
+			}
 		}
 	}
 	private void tunnel(Nexus nex  ,int n){
@@ -61,8 +82,7 @@ public class Tree {
 		}
 		
 	}
-	private ArrayList<Nexus> improvisedDrill(Nexus nex ,int n){
-		ArrayList<Nexus> x = new ArrayList();
+	private ArrayList<Nexus> improvisedDrill(Nexus nex ,int n, ArrayList<Nexus> x){
 		if (nex.get() == n){
 			x.add(nex);
 			return x;
@@ -74,7 +94,7 @@ public class Tree {
 			}
 			else{
 				x.add(nex);
-				return improvisedDrill(nex.getRightChild(), n);
+				return improvisedDrill(nex.getRightChild(), n,x);
 			}
 		}
 		else{
@@ -83,7 +103,7 @@ public class Tree {
 			}
 			else{
 				x.add(nex);
-				return improvisedDrill(nex.getLeftChild(), n);
+				return improvisedDrill(nex.getLeftChild(), n,x);
 			}
 		}
 		

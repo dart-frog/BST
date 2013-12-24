@@ -21,4 +21,10 @@ public class Nexus {
 	public void setLeftChild(int n){
 		leftChild = new Nexus(n);
 	}
+	public void setLeftChildNull(){
+		leftChild = null;
+	}
+	public void setRightChildNull(){
+		rightChild = null;
+	}
 }
