@@ -13,12 +13,12 @@ public class Nexus {
 		return rightChild;
 	}
 	public Nexus getLeftChild(){
-		return rightChild;
+		return leftChild;
 	}
 	public void setRightChild(int n){
-		rightChild.setRightChild(n);
+		rightChild = new Nexus(n);
 	}
 	public void setLeftChild(int n){
-		leftChild.setLeftChild(n);
+		leftChild = new Nexus(n);
 	}
 }
