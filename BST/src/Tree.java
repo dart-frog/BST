@@ -37,9 +37,30 @@ public class Tree {
 				granddad = nex.getLeftChild();
 			}
 			else{
-				
+				Nexus parent = z.get(z.size() -2);
+				if (parent.getRightChild() == nex){
+					parent.setRightChild(nex.getLeftChild().get());
+				}
+				if (parent.getLeftChild() == nex){
+					parent.setLeftChild(nex.getLeftChild().get());
+				}
 			}
 		}
+		if (nex.leftChild == null && nex.rightChild != null){
+			if (granddad == nex){
+				granddad = nex.getRightChild();
+			}
+			else{
+				Nexus parent = z.get(z.size() -2);
+				if (parent.getRightChild() == nex){
+					parent.setRightChild(nex.getRightChild().get());
+				}
+				if (parent.getLeftChild() == nex){
+					parent.setLeftChild(nex.getRightChild().get());
+				}
+			}
+		}
+		
 	}
 	private void tunnel(Nexus nex  ,int n){
 		if (n >= nex.get()){

@@ -23,8 +23,14 @@ public class TreeTest {
 		t.insert(8);
 		t.insert(6);
 		t.insert(12);
+		t.insert(11);
 		t.delete(12);
-		assertEquals("test delete method", false, t.exists(12));
+		t.delete(4);
+		assertEquals("no child delete method", false, t.exists(12));
+		assertEquals("left child delete method", false, t.exists(12));
+		assertEquals("11 is still left", true, t.exists(11));
+		assertEquals("right child delete method", false, t.exists(4));
+		assertEquals("2 is still left", true, t.exists(2));
 	}
 
 }
