@@ -1,7 +1,7 @@
 
 public class Nexus {
-	Nexus leftChild = null;
-	Nexus rightChild = null;
+	public Nexus leftChild = null;
+	public Nexus rightChild = null;
 	int n;
 	public Nexus(int n){
 		this.n = n;

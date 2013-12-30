@@ -12,10 +12,14 @@ public class Tree {
 	public boolean  exists(int n){
 		return drill(granddad,n);
 	}
+
 	public void delete(int n){
 		ArrayList<Nexus> z = improvisedDrill(granddad, n, new ArrayList<Nexus>());
 		
 		Nexus nex = z.get(z.size() -1);
+		
+		
+		
 		//no children
 		if (nex.leftChild ==null && nex.rightChild == null){
 			if (granddad == nex){
@@ -26,13 +30,13 @@ public class Tree {
 				if (parent.getRightChild() == nex){
 					parent.setRightChildNull();
 				}
-				if (parent.getLeftChild() == nex){
+				else if (parent.getLeftChild() == nex){
 					parent.setLeftChildNull();
 				}
 			}
 		}
 		//one child
-		if (nex.leftChild != null && nex.rightChild == null){
+		else if (nex.leftChild != null && nex.rightChild == null){
 			if (granddad == nex){
 				granddad = nex.getLeftChild();
 			}
@@ -46,7 +50,7 @@ public class Tree {
 				}
 			}
 		}
-		if (nex.leftChild == null && nex.rightChild != null){
+		else if (nex.leftChild == null && nex.rightChild != null){
 			if (granddad == nex){
 				granddad = nex.getRightChild();
 			}
@@ -58,6 +62,45 @@ public class Tree {
 				if (parent.getLeftChild() == nex){
 					parent.setLeftChild(nex.getRightChild().get());
 				}
+			}
+		}
+		//two children 
+		else{
+			if (granddad == nex){
+				if (granddad.getLeftChild().getRightChild() == null){
+					Nexus h = granddad.getLeftChild();
+					h.rightChild = granddad.getRightChild();
+					granddad = h;
+				}
+				else{
+					Nexus w = goRight(granddad.getLeftChild());
+					delete(w.get());
+					w.leftChild = granddad.leftChild;
+					w.rightChild = granddad.rightChild;
+					granddad = w;
+				}			
+			}
+			else{
+				if (nex.getLeftChild().getRightChild() == null){
+					Nexus h = nex.getLeftChild();
+					h.rightChild = nex.getRightChild();
+					Nexus parent = z.get(z.size() -2);
+					if (parent.getRightChild() == nex){
+						parent.rightChild = h;
+					}
+					if (parent.getLeftChild() == nex){
+						parent.leftChild = h;
+					}
+				}
+				else{
+					Nexus w = goRight(nex.getLeftChild());
+					delete(w.get());
+					w.leftChild = nex.leftChild;
+					w.rightChild = nex.rightChild;
+					nex = w;
+				}
+							
+				
 			}
 		}
 		
@@ -126,6 +169,15 @@ public class Tree {
 				x.add(nex);
 				return improvisedDrill(nex.getLeftChild(), n,x);
 			}
+		}
+		
+	}
+	private Nexus goRight(Nexus nex){
+		if (nex.getRightChild() == null){
+			return nex;
+		}
+		else{
+			return goRight(nex.rightChild);
 		}
 		
 	}
