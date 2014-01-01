@@ -59,6 +59,19 @@ public class TreeTest {
 		assertEquals("can delete two child node", false, t.exists(3));
 		assertEquals("four still exists", true, t.exists(4));
 	}
+	@Test
+	public void sortTest(){
+		Tree t = new Tree(5);
+		t.insert(3);
+		t.insert(2);
+		t.insert(8);
+		t.insert(6);
+		t.insert(12);
+		t.insert(11);
+		t.insert(4);
+		System.out.print(t.sort());
+		assertEquals("can sort a binary tree", true, t.sort());
+	}
 	
 
 }

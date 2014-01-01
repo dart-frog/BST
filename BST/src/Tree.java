@@ -12,7 +12,9 @@ public class Tree {
 	public boolean  exists(int n){
 		return drill(granddad,n);
 	}
-
+	public ArrayList<Integer> sort(){
+		return GetInOrderTraversal(new ArrayList(), granddad);
+	}
 	public void delete(int n){
 		ArrayList<Nexus> z = improvisedDrill(granddad, n, new ArrayList<Nexus>());
 		
@@ -180,6 +182,18 @@ public class Tree {
 			return goRight(nex.rightChild);
 		}
 		
+	}
+	private ArrayList<Integer> GetInOrderTraversal(ArrayList<Integer> s, Nexus node){
+		if (node.getLeftChild() != null){
+			s.addAll(GetInOrderTraversal(s,node.getLeftChild()));
+		}
+		s.add(node.get());
+		if (node.getRightChild() != null){
+			s.addAll(GetInOrderTraversal(s,node.getRightChild()));
+			
+			
+		}
+		return s;
 	}
 	
 }
