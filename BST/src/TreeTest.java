@@ -1,5 +1,7 @@
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import org.junit.Test;
 
 
@@ -14,6 +16,7 @@ public class TreeTest {
 		t.insert(6);
 		t.insert(12);
 		assertEquals("test exists method" , true , t.exists(12));
+		//assertEquals("test proper construct", true, validateTree(t)); 
 	}
 	@Test
 	public void deleteTest(){
@@ -73,6 +76,14 @@ public class TreeTest {
 		t.delete(6);
 		System.out.print(t.sort());
 		assertEquals("can sort a binary tree", true, t.sort());
+	}
+	private Boolean validateTree(Tree t){
+		ArrayList<Integer> x = t.sort();
+		for (int i = 1; i < x.size(); i++){
+			if (x.get(i) < x.get(i -1))
+					return false;
+		}
+		return true;
 	}
 	
 
