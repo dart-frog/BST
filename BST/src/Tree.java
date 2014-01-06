@@ -46,9 +46,11 @@ public class Tree {
 				Nexus parent = z.get(z.size() -2);
 				if (parent.getRightChild() == nex){
 					parent.setRightChild(nex.getLeftChild().get());
+					parent.getRightChild().leftChild = nex.getRightChild().leftChild;
 				}
 				if (parent.getLeftChild() == nex){
 					parent.setLeftChild(nex.getLeftChild().get());
+					parent.getLeftChild().leftChild = nex.getLeftChild().leftChild;
 				}
 			}
 		}
@@ -60,9 +62,11 @@ public class Tree {
 				Nexus parent = z.get(z.size() -2);
 				if (parent.getRightChild() == nex){
 					parent.setRightChild(nex.getRightChild().get());
+					parent.getRightChild().leftChild = nex.getRightChild().leftChild;
 				}
 				if (parent.getLeftChild() == nex){
 					parent.setLeftChild(nex.getRightChild().get());
+					parent.getLeftChild().leftChild = nex.getLeftChild().leftChild;
 				}
 			}
 		}

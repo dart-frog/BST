@@ -69,6 +69,8 @@ public class TreeTest {
 		t.insert(12);
 		t.insert(11);
 		t.insert(4);
+		t.delete(8);
+		t.delete(6);
 		System.out.print(t.sort());
 		assertEquals("can sort a binary tree", true, t.sort());
 	}
