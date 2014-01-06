@@ -185,11 +185,11 @@ public class Tree {
 	}
 	private ArrayList<Integer> GetInOrderTraversal(ArrayList<Integer> s, Nexus node){
 		if (node.getLeftChild() != null){
-			s.addAll(GetInOrderTraversal(s,node.getLeftChild()));
+			s.addAll(GetInOrderTraversal(new ArrayList<Integer>(),node.getLeftChild()));
 		}
 		s.add(node.get());
 		if (node.getRightChild() != null){
-			s.addAll(GetInOrderTraversal(s,node.getRightChild()));
+			s.addAll(GetInOrderTraversal(new ArrayList<Integer>(),node.getRightChild()));
 			
 			
 		}
