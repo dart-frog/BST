@@ -75,7 +75,7 @@ public class TreeTest {
 		t.delete(8);
 		t.delete(6);
 		System.out.print(t.sort());
-		assertEquals("can sort a binary tree", true, t.sort());
+		assertEquals("can sort a binary tree", true, validateTree(t));
 	}
 	private Boolean validateTree(Tree t){
 		ArrayList<Integer> x = t.sort();

@@ -27,4 +27,14 @@ public class Nexus {
 	public void setRightChildNull(){
 		rightChild = null;
 	}
+	public void setAs(Nexus nex){
+		n = nex.get();
+		if (nex.getLeftChild() != null){
+			leftChild = nex.leftChild;
+		}
+		if (nex.getRightChild() != null){
+			rightChild = nex.rightChild;
+		}
+		
+	}
 }
