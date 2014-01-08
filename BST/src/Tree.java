@@ -3,18 +3,39 @@ import java.util.ArrayList;
 
 public class Tree {
 	private Nexus granddad; 
+	/**
+	 * creates a binary search tree
+	 * @param g the root node
+	 */
 	public Tree(int g){
 		granddad = new Nexus(g);
 	}
+	/**
+	 * inserts a node into the tree
+	 * @param n the node you want to insert
+	 */
 	public void insert(int n){
 		tunnel(granddad,n);
 	}
+	/**
+	 * Checks if a given node exists within the tree
+	 * @param n the node you want to check
+	 * @return weather the given node exists
+	 */
 	public boolean  exists(int n){
 		return drill(granddad,n);
 	}
+	/**
+	 * sorts a binary search tree
+	 * @return an array of the sorted elements 
+	 */
 	public ArrayList<Integer> sort(){
 		return GetInOrderTraversal(new ArrayList(), granddad);
 	}
+	/**
+	 * deletes a given node
+	 * @param n the node you want to delete
+	 */
 	public void delete(int n){
 		ArrayList<Nexus> z = improvisedDrill(granddad, n, new ArrayList<Nexus>());
 		
@@ -45,10 +66,10 @@ public class Tree {
 			else{
 				Nexus parent = z.get(z.size() -2);
 				if (parent.getRightChild() == nex){
-					parent.rightChild.setAs(nex.leftChild);
+					parent.rightChild = nex.leftChild;
 				}
 				if (parent.getLeftChild() == nex){
-					parent.leftChild.setAs(nex.leftChild);
+					parent.leftChild = nex.leftChild;
 				}
 			}
 		}
@@ -59,10 +80,10 @@ public class Tree {
 			else{
 				Nexus parent = z.get(z.size() -2);
 				if (parent.getRightChild() == nex){
-					parent.rightChild.setAs(nex.rightChild);
+					parent.rightChild = nex.rightChild;
 				}
 				if (parent.getLeftChild() == nex){
-					parent.leftChild.setAs(nex);
+					parent.leftChild = nex.rightChild;
 				}
 			}
 		}
